@@ -1,34 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import {RestaurantScreen} from './src/features/restaurant/screens/restaurants.screen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-export const App = () =>{
-  return(
-    <View></View>
-  )
+export default function App() {
+  return (
+    <>
+      <RestaurantScreen />
+    </>
+  );
 }
-
-const styles = StyleSheet.create({
-
-});
-
-
