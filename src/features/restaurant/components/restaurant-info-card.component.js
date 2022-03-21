@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {Card} from 'react-native-paper';
 import styled from 'styled-components/native';
 import {SvgXml} from 'react-native-svg';
 import star from '../../../assets/stars';
 import open from '../../../assets/open';
 import {Spacer} from './spacer.component';
+import {Text} from '../../../components/typography/text.component';
 
 const Info = styled.View`
   padding: ${props => props.theme.space[3]};
@@ -31,13 +31,6 @@ const SectionEnd = styled.View`
 const Icon = styled.Image`
   width:20px
   height:20px
-`;
-
-const Title = styled.Text`
-  font-family: ${props => props.theme.fonts.heading};
-  font-weight: ${props => props.theme.fontWeights.regular};
-  font-size: ${props => props.theme.fontSizes.body};
-  color: ${props => props.theme.colors.ui.primary};
 `;
 
 const Address = styled.Text`
@@ -75,7 +68,7 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
     <RestaurantCard>
       <RestaurantCardCover key={name} source={{uri: photos[0]}} />
       <Info>
-        <Title>{name}</Title>
+        <Text>{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map(() => (
@@ -84,7 +77,7 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
           </Rating>
           <SectionEnd>
             {isCLosedTemporarily && (
-              <Text variant="label" style={{color: 'red'}}>
+              <Text variant="error" style={{color: 'red'}}>
                 CLOSED TEMPORARILY
               </Text>
             )}
