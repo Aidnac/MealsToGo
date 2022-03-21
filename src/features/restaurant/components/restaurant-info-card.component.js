@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, Image} from 'react-native';
+import {Text} from 'react-native';
 import {Card} from 'react-native-paper';
 import styled from 'styled-components/native';
 import {SvgXml} from 'react-native-svg';
 import star from '../../../assets/stars';
 import open from '../../../assets/open';
+import {Spacer} from './spacer.component';
 
 const Info = styled.View`
   padding: ${props => props.theme.space[3]};
@@ -25,6 +26,11 @@ const SectionEnd = styled.View`
   flex: 1
   flex-direction: row
   justify-content: flex-end
+`;
+
+const Icon = styled.Image`
+  width:20px
+  height:20px
 `;
 
 const Title = styled.Text`
@@ -66,7 +72,6 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    // <Card elevation={5} style={styles.card}>
     <RestaurantCard>
       <RestaurantCardCover key={name} source={{uri: photos[0]}} />
       <Info>
@@ -83,11 +88,11 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
                 CLOSED TEMPORARILY
               </Text>
             )}
+            <Spacer position="left" size="large" />
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            <Image
-              style={{width: 15, height: 15, marginLeft: 16}}
-              source={{uri: icon}}
-            />
+            <Spacer position="left" size="large">
+              <Icon source={{uri: icon}} />
+            </Spacer>
           </SectionEnd>
         </Section>
 
