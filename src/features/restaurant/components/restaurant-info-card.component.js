@@ -1,53 +1,21 @@
 import React from 'react';
-import {Card} from 'react-native-paper';
-import styled from 'styled-components/native';
+
 import {SvgXml} from 'react-native-svg';
 import star from '../../../assets/stars';
 import open from '../../../assets/open';
 import {Spacer} from './spacer.component';
 import {Text} from '../../../components/typography/text.component';
 
-const Info = styled.View`
-  padding: ${props => props.theme.space[3]};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding-top: ${props => props.theme.space[2]};
-  padding-bottom: ${props => props.theme.space[2]};
-`;
-
-const Section = styled.View`
-  flex-direction: row
-  align-items: center
-`;
-
-const SectionEnd = styled.View`
-  flex: 1
-  flex-direction: row
-  justify-content: flex-end
-`;
-
-const Icon = styled.Image`
-  width:20px
-  height:20px
-`;
-
-const Address = styled.Text`
-  font-family: ${props => props.theme.fonts.body};
-  font-weight: ${props => props.theme.fontWeights.regular};
-  font-size: ${props => props.theme.fontSizes.caption};
-  color: ${props => props.theme.colors.ui.primary};
-`;
-
-const RestaurantCard = styled(Card)`
-  background-color: ${props => props.theme.colors.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  background-color: ${props => props.theme.colors.bg.primary};
-  padding: 20px;
-`;
+import {
+  Info,
+  RestaurantCard,
+  RestaurantCardCover,
+  Section,
+  Rating,
+  SectionEnd,
+  Icon,
+  Address,
+} from './restaurant-info-card.styles';
 
 export const RestaurantInfoCard = ({restaurant = {}}) => {
   const {
@@ -77,9 +45,7 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
           </Rating>
           <SectionEnd>
             {isCLosedTemporarily && (
-              <Text variant="error" style={{color: 'red'}}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             <Spacer position="left" size="large" />
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
