@@ -42,7 +42,6 @@ export const RestaurantScreen = () => {
           </Spacer>
         )}
         keyExtractor={item => item.name}
-        contentContainerStyle={{padding: 16}}
       />
     </SafeArea>
   );
