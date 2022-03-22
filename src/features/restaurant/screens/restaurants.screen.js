@@ -16,20 +16,24 @@ const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {padding: 16},
 })``;
 
+const Loading = styled(ActivityIndicator)`
+  margin-left: -25;
+`;
+
+const LoadingContainer = styled.View`
+  position: absolute
+  top: 50%
+  left: 50%`;
+
 export const RestaurantScreen = () => {
   const {isLoading, error, restaurants} = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
       {isLoading && (
-        <View style={{position: 'absolute', top: '50%', left: '50%'}}>
-          <ActivityIndicator
-            size={50}
-            style={{marginLeft: -25}}
-            animating={true}
-            color={Colors.blue300}
-          />
-        </View>
+        <LoadingContainer>
+          <Loading size={50} animating={true} color={Colors.blue300} />
+        </LoadingContainer>
       )}
       <SearchContainer>
         <Searchbar />
