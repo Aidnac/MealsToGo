@@ -1,33 +1,32 @@
 import React, {useContext} from 'react';
-import {View} from 'react-native';
-import {Colors, Searchbar} from 'react-native-paper';
 import {FlatList} from 'react-native';
-import {RestaurantInfoCard} from '../components/restaurant-info-card.component';
 import styled from 'styled-components/native';
-import {Spacer} from '../components/spacer.component';
-import {SafeArea} from '../../../utils/safe-area.component';
-import {RestaurantsContext} from '../../../services/restaurants/resturants.context';
-import {ActivityIndicator, Color} from 'react-native-paper';
+import {ActivityIndicator, Colors} from 'react-native-paper';
 
-const SearchContainer = styled.View`
-  padding: ${props => props.theme.space[3]};
-`;
+import {RestaurantsContext} from '../../../services/restaurants/restaurants.context';
+
+import {Search} from '../components/search.component';
+import {RestaurantInfoCard} from '../components/restaurant-info-card.component';
+import {SafeArea} from '../../../utils/safe-area.component';
+import {Spacer} from '../components/spacer.component';
+
 const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {padding: 16},
+  contentContainerStyle: {
+    padding: 16,
+  },
 })``;
 
 const Loading = styled(ActivityIndicator)`
-  margin-left: -25;
+  margin-left: -25px;
+`;
+const LoadingContainer = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
 `;
 
-const LoadingContainer = styled.View`
-  position: absolute
-  top: 50%
-  left: 50%`;
-
-export const RestaurantScreen = () => {
-  const {isLoading, error, restaurants} = useContext(RestaurantsContext);
-
+export const RestaurantsScreen = () => {
+  const {isLoading, restaurants} = useContext(RestaurantsContext);
   return (
     <SafeArea>
       {isLoading && (
@@ -35,9 +34,7 @@ export const RestaurantScreen = () => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({item}) => {
