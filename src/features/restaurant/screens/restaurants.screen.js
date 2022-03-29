@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import {ActivityIndicator, Colors} from 'react-native-paper';
 
 import {RestaurantsContext} from '../../../services/restaurants/restaurants.context';
-
+// import {FavouritesContext} from '../../../services/favourites/favourites.context';
 import {Search} from '../components/search.component';
 import {RestaurantInfoCard} from '../components/restaurant-info-card.component';
 import {SafeArea} from '../../../utils/safe-area.component';
@@ -28,6 +28,7 @@ const LoadingContainer = styled.View`
 //all components in the stack get the prop navigation
 export const RestaurantsScreen = ({navigation}) => {
   const {isLoading, restaurants} = useContext(RestaurantsContext);
+  // const {favourites} = useContext(FavouritesContext);
   // console.log(navigation);
   return (
     <SafeArea>
