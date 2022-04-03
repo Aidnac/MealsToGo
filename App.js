@@ -7,18 +7,21 @@ import {LocationContextProvider} from './src/services/location/location.context'
 import {FavouritesContextProvider} from './src/services/favourites/favourites.context';
 
 import {Navigation} from './src/infrastruture/navigation';
+import {AuthenticationContextProvider} from './src/services/authentication/authentication.context';
 
 export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
     </>
   );
