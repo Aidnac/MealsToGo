@@ -11,12 +11,7 @@ import {SafeArea} from '../../../utils/safe-area.component';
 import {Spacer} from '../components/spacer.component';
 import {FavouritesBar} from '../../../components/favourites/favourites-bar.component';
 import {FavouritesContext} from '../../../services/favourites/favourites.context';
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import {RestaurantList} from '../components/restaurant-list.styles';
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
